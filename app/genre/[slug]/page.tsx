@@ -3,9 +3,14 @@ import { fetchMoviesByGenre } from "@/helpers/fetchMoviesByGenre";
 import ContentRow from "@/components/ContentRow";
 import { notFound } from "next/navigation";
 
-export default async function GenrePage({ params }: { params: { slug: string } }) {
+export default async function GenrePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = await params;
   const genres = await fetchGenres();
-  const genre = genres.find((g) => g.name.toLowerCase() === params.slug.toLowerCase());
+  const genre = genres.find((g) => g.name.toLowerCase() === slug.toLowerCase());
 
   if (!genre) notFound();
 
