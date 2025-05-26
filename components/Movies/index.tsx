@@ -1,5 +1,7 @@
+//Component
 import MovieCard from "../MovieCard";
 
+//Types
 import type { MoviesProps } from "@/types/elementsProps";
 
 export default function Movies({ movies }: MoviesProps) {
