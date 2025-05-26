@@ -1,5 +1,6 @@
 //Components
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 //Providers
 import { AppProvider } from "@/context/AppContext";
@@ -29,6 +30,7 @@ export default function RootLayout({
         <AppProvider>
           <Header />
           <main className="max-w-screen-xl mx-auto px-6 py-8">{children}</main>
+          <Footer/>
         </AppProvider>
       </body>
     </html>
