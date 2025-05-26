@@ -21,3 +21,11 @@ export type Genre = {
   id: number;
   name: string;
 };
+
+export type AppState = {
+  selectedContentId: string | null;
+  setSelectedContentId: (id: string | null) => void;
+  genres: Genre[];
+  genresLoading: boolean;
+  genresError: string | null;
+};

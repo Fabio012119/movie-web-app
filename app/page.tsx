@@ -1,8 +1,10 @@
 "use client";
-
-import { useGetMovies } from "@/hooks/useGetMovies";
+//Components
 import Movies from "@/components/Movies";
 import Spinner from "@/components/Spinner";
+
+//Hooks
+import { useGetMovies } from "@/hooks/useGetMovies";
 
 export default function HomePage() {
   const { movies, loading, error } = useGetMovies();

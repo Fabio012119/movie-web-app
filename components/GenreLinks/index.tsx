@@ -1,5 +1,8 @@
-import { useAppContext } from "@/context/AppContext";
+//Components
 import Spinner from "../Spinner";
+
+//Hooks
+import { useAppContext } from "@/context/AppContext";
 
 export default function GenreLinks() {
   const { genres, genresLoading, genresError } = useAppContext();

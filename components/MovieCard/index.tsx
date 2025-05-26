@@ -1,12 +1,10 @@
+//Components
 import Image from "next/image";
-import { TmdbMovie } from "@/types/general";
 
-type Props = {
-  movie: TmdbMovie;
-  small?: boolean;
-};
+//Types
+import type { MovieCardProps } from "@/types/elementsProps";
 
-export default function MovieCard({ movie, small = false }: Props) {
+export default function MovieCard({ movie, small = false }: MovieCardProps) {
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : "/no-poster.png";

@@ -1,5 +1,10 @@
-import { fetchGenres } from "@/helpers/fetchGenres";
+//Hooks
 import { useState, useEffect } from "react";
+
+//Helpers
+import { fetchGenres } from "@/helpers/fetchGenres";
+
+//Types
 import type { Genre } from "@/types/general";
 
 export const useGetGenres = () => {

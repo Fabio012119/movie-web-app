@@ -1,14 +1,12 @@
 "use client";
 
+//Components
 import MovieCard from "@/components/MovieCard";
-import { TmdbMovie } from "@/types/general";
 
-type Props = {
-  title: string;
-  movies: TmdbMovie[];
-};
+//Types
+import type { ContentRowProps } from "@/types/elementsProps";
 
-export default function ContentRow({ title, movies }: Props) {
+export default function ContentRow({ title, movies }: ContentRowProps) {
   return (
     <section className="mb-8">
       <h3 className="text-xl font-semibold mb-3">{title}</h3>

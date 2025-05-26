@@ -2,15 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { useGetGenres } from "@/hooks/useGetGenres";
-import type { Genre } from "@/types/general";
-
-type AppState = {
-  selectedContentId: string | null;
-  setSelectedContentId: (id: string | null) => void;
-  genres: Genre[];
-  genresLoading: boolean;
-  genresError: string | null;
-};
+import type { AppState } from "@/types/general";
 
 const AppContext = createContext<AppState | undefined>(undefined);
 

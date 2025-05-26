@@ -1,9 +1,6 @@
-import { TmdbMovie } from "@/types/general";
 import MovieCard from "../MovieCard";
 
-type MoviesProps = {
-  movies: TmdbMovie[];
-};
+import type { MoviesProps } from "@/types/elementsProps";
 
 export default function Movies({ movies }: MoviesProps) {
   return (
