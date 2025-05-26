@@ -29,3 +29,5 @@ export type AppState = {
   genresLoading: boolean;
   genresError: string | null;
 };
+
+export type GenreMovieMap = Record<number, TmdbMovie[]>;

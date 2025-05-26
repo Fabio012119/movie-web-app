@@ -1,29 +1,24 @@
 "use client";
-//Components
-import Movies from "@/components/Movies";
+import { useGetMoviesByGenres } from "@/hooks/useGetMoviesByGenres";
+import ContentRow from "@/components/ContentRow";
 import Spinner from "@/components/Spinner";
 
-//Hooks
-import { useGetMovies } from "@/hooks/useGetMovies";
-
 export default function HomePage() {
-  const { movies, loading, error } = useGetMovies();
+  const { genres, moviesByGenre, loading, error } = useGetMoviesByGenres();
+
+  if (loading) return <Spinner />;
+  if (error) return <p className="text-red-600">Error: {error}</p>;
 
   return (
     <section>
-      <h2 className="text-2xl font-bold mb-4">Popular Movies</h2>
-
-      {loading && <Spinner />}
-
-      {!loading && error && (
-        <p className="text-red-600 font-medium">Error: {error}</p>
-      )}
-
-      {!loading && !error && movies.length === 0 && (
-        <p className="text-gray-500">No movies found.</p>
-      )}
-
-      {!loading && !error && movies.length > 0 && <Movies movies={movies} />}
+      {genres.map((genre, genreIndex) => (
+        <ContentRow
+          key={genre.id}
+          rowIndex={genreIndex + 1}
+          title={genre.name}
+          movies={moviesByGenre[genre.id] || []}
+        />
+      ))}
     </section>
   );
 }

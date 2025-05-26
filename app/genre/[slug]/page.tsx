@@ -19,7 +19,7 @@ export default async function GenrePage({
   return (
     <section>
       <h2 className="text-2xl font-bold mb-6">{genre.name} Movies</h2>
-      <ContentRow title={genre.name} movies={movies} />
+      <ContentRow title={genre.name} movies={movies} rowIndex={1} />
     </section>
   );
 }

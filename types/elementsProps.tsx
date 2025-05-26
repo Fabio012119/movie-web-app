@@ -3,6 +3,7 @@ import type { TmdbMovie } from "./general";
 export type ContentRowProps = {
   title: string;
   movies: TmdbMovie[];
+  rowIndex: number;
 };
 
 export type MovieCardProps = {

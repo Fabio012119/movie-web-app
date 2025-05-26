@@ -1,5 +1,10 @@
+//Hooks
 import { useEffect, useState } from "react";
+
+//Helpers
 import { fetchMovies } from "@/helpers/fetchMovies";
+
+//Types
 import type { TmdbMovie, TmdbResponse } from "@/types/general";
 
 export const useGetMovies = () => {
