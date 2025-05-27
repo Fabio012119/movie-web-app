@@ -5,7 +5,6 @@ export async function fetchMovies<T>(
   query: Record<string, string | number> = {}
 ): Promise<T> {
   const params = new URLSearchParams({
-    api_key: process.env.TMDB_API_KEY!,
     language: "en-US",
     ...Object.fromEntries(
       Object.entries(query).map(([k, v]) => [k, String(v)])

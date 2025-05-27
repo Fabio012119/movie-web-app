@@ -19,7 +19,7 @@ export default function HomePage() {
   if (loading) {
     return (
       <>
-        {Array.from({ length: 4 }).map((_, index) => (
+        {Array.from({ length: genres.length }).map((_, index) => (
           <ContentRowSkeleton key={index} />
         ))}
       </>
