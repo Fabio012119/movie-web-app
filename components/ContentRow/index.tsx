@@ -16,17 +16,22 @@ export default function ContentRow({
 }: ContentRowProps) {
   const isEven = rowIndex % 2 === 0;
   const swiperRef = useRef<SwiperType | null>(null);
+  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleMouseEnter = () => {
+  const pauseAutoplay = () => {
     if (swiperRef.current?.autoplay) {
       swiperRef.current.autoplay.stop();
     }
-  };
 
-  const handleMouseLeave = () => {
-    if (swiperRef.current?.autoplay) {
-      swiperRef.current.autoplay.start();
+    if (autoplayTimeoutRef.current) {
+      clearTimeout(autoplayTimeoutRef.current);
     }
+
+    autoplayTimeoutRef.current = setTimeout(() => {
+      if (swiperRef.current?.autoplay) {
+        swiperRef.current.autoplay.start();
+      }
+    }, 5000);
   };
 
   return (
@@ -42,16 +47,16 @@ export default function ContentRow({
           disableOnInteraction: false,
           reverseDirection: !isEven,
         }}
-        speed={4000 * rowIndex}
+        speed={2000 * rowIndex}
         slidesPerView={6}
-        spaceBetween={20}
-        allowTouchMove={false}
+        spaceBetween={10}
+        allowTouchMove={true}
       >
         {movies.map((movie) => (
           <SwiperSlide
             key={movie.id}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={pauseAutoplay}
+            onTouchStart={pauseAutoplay}
           >
             <MovieCard movie={movie} small />
           </SwiperSlide>
