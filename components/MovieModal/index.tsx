@@ -4,6 +4,9 @@
 import MovieCard from "../MovieCard";
 import MovieVideo from "../MovieVideo";
 
+//Utils
+import { twMerge } from "tailwind-merge";
+
 //Helpers
 import { useGetMovieDetails } from "@/hooks/useGetMovieDetails";
 
@@ -19,7 +22,12 @@ export default function MovieModal() {
   if (!selectedContentId || !movie) return null;
 
   return (
-    <div className="fixed inset-0 bg-[rgba(0,0,0,0.65)] flex items-center justify-center z-50 slide-bottom">
+    <div
+      className={twMerge(
+        "fixed inset-0 bg-[rgba(0,0,0,0.65)] flex",
+        "items-center justify-center z-50 slide-bottom"
+      )}
+    >
       <div className="bg-white w-full max-w-4xl rounded p-6 relative text-black">
         <button
           onClick={() => setSelectedContentId(null)}

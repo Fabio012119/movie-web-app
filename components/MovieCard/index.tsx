@@ -4,6 +4,9 @@ import Image from "next/image";
 //Hooks
 import { useAppContext } from "@/context/AppContext";
 
+//Utils
+import { twMerge } from "tailwind-merge";
+
 //Assets
 import defaultImage from "@/assets/no-poster.png";
 
@@ -34,7 +37,13 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
         <p className="text-xs text-gray-400">{movie.release_date}</p>
       </div>
 
-      <div className="absolute p-2 inset-0 bg-[rgba(0,0,0,0.6)] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end text-xs rounded">
+      <div
+        className={twMerge(
+          "absolute p-2 inset-0 bg-[rgba(0,0,0,0.6)] text-white",
+          "opacity-0 group-hover:opacity-100 transition-opacity",
+          "duration-300 flex flex-col justify-end text-xs rounded"
+        )}
+      >
         <p className="font-semibold text-sm truncate">{movie.title}</p>
         {movie.vote_average && <p>Rating: {movie.vote_average.toFixed(1)}</p>}
         <p>Release Date: {movie.release_date?.slice(0, 4)}</p>

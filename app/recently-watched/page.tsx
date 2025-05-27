@@ -7,6 +7,9 @@ import MovieCard from "@/components/MovieCard";
 import { useWatchHistory } from "@/hooks/useWatchHistory";
 import { useEffect, useState } from "react";
 
+//Utils
+import { twMerge } from "tailwind-merge";
+
 //Helpers
 import { loadWatchedMovies } from "@/helpers/recentlyWatched";
 
@@ -57,7 +60,11 @@ export default function RecentlyWatched() {
             </div>
             <button
               onClick={() => handleRemove(`${movie.id}`)}
-              className="absolute top-0 right-0 text-xs bg-black bg-opacity-60 text-white px-1 py-0.5 rounded-bl cursor-pointer"
+              className={twMerge(
+                "absolute top-0 right-0 text-xs",
+                "bg-black bg-opacity-60 text-white",
+                "px-1 py-0.5 rounded-bl cursor-pointer"
+              )}
             >
               ✕
             </button>
