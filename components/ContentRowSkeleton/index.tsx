@@ -5,7 +5,7 @@ export default function ContentRowSkeleton() {
         {Array.from({ length: 6 }).map((_, idx) => (
           <div
             key={idx}
-            className="w-[150px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[300px] bg-gray-300 bg-op rounded-md"
+            className="w-[150px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[300px] bg-[rgba(209,213,219,0.5)] rounded-md"
           />
         ))}
       </div>
