@@ -1,13 +1,16 @@
 // Components
 import Image from "next/image";
 
+//Assets
+import defaultImage from "@/assets/no-poster.png";
+
 // Types
 import type { MovieCardProps } from "@/types/elementsProps";
 
 export default function MovieCard({ movie, small = false }: MovieCardProps) {
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : "/no-poster.png";
+    : defaultImage;
 
   return (
     <div className="relative group cursor-pointer p-2">
