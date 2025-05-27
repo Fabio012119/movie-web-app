@@ -6,7 +6,7 @@ import { fetchGenres } from "@/helpers/fetchGenres";
 import { fetchMoviesByGenre } from "@/helpers/fetchMoviesByGenre";
 
 //Types
-import type { GenreMovieMap, Genre } from "@/types/general";
+import type { GenreMovieMap, Genre, TmdbMovie } from "@/types/general";
 
 export function useGetMoviesByGenres() {
   const [genres, setGenres] = useState<Genre[]>([]);
@@ -17,17 +17,22 @@ export function useGetMoviesByGenres() {
   useEffect(() => {
     const loadAll = async () => {
       try {
-        const fetchedGenres = await fetchGenres();
-        setGenres(fetchedGenres);
+        const genreList = await fetchGenres();
+        setGenres(genreList);
 
-        const result: GenreMovieMap = {};
+        const genreMovies = await Promise.all(
+          genreList.map(async (genre) => {
+            const movies = await fetchMoviesByGenre(genre.id);
+            return { id: genre.id, movies };
+          })
+        );
 
-        for (const genre of fetchedGenres) {
-          const movies = await fetchMoviesByGenre(genre.id);
-          result[genre.id] = movies;
-        }
+        const map: Record<number, TmdbMovie[]> = {};
+        genreMovies.forEach(({ id, movies }) => {
+          map[id] = movies;
+        });
 
-        setMoviesByGenre(result);
+        setMoviesByGenre(map);
       } catch (err) {
         setError((err as Error).message);
       } finally {
