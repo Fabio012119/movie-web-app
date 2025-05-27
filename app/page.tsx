@@ -17,13 +17,9 @@ export default function HomePage() {
     .slice(0, 20);
 
   if (loading) {
-    return (
-      <>
-        {Array.from({ length: genres.length }).map((_, index) => (
-          <ContentRowSkeleton key={index} />
-        ))}
-      </>
-    );
+    return Array.from({ length: genres.length }).map((_, index) => (
+      <ContentRowSkeleton key={index} />
+    ));
   }
 
   if (error) return <p className="text-red-600">Error: {error}</p>;
