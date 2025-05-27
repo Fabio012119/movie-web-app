@@ -1,8 +1,16 @@
 "use client";
+
+//Hooks
 import { useEffect, useRef } from "react";
 import { useWatchHistory } from "@/hooks/useWatchHistory";
 
-export default function MovieVideo({ movieId }: { movieId: string }) {
+//Helpers
+import { setupVideoProgress, handlePlayProgress } from "@/helpers/MovieVideo";
+
+//Types
+import type { MovieVideoProps } from "@/types/elementsProps";
+
+export default function MovieVideo({ movieId }: MovieVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const { saveProgress, getProgress } = useWatchHistory();
 
@@ -10,18 +18,22 @@ export default function MovieVideo({ movieId }: { movieId: string }) {
     const video = videoRef.current;
     if (!video) return;
 
-    video.currentTime = getProgress(movieId);
+    const cleanup = setupVideoProgress(
+      video,
+      movieId,
+      getProgress,
+      saveProgress
+    );
 
-    const handleBeforeUnload = () => {
-      saveProgress(movieId, Math.floor(video.currentTime));
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => {
-      handleBeforeUnload();
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
+    return cleanup;
   }, [movieId, saveProgress, getProgress]);
+
+  const handlePlay = () => {
+    const video = videoRef.current;
+    if (video) {
+      handlePlayProgress(video, movieId, saveProgress);
+    }
+  };
 
   return (
     <video
@@ -29,6 +41,7 @@ export default function MovieVideo({ movieId }: { movieId: string }) {
       src="/mock_movie.mp4"
       controls
       className="w-full h-[20rem] rounded object-cover"
+      onPlay={handlePlay}
     />
   );
 }

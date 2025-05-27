@@ -14,3 +14,5 @@ export type MovieCardProps = {
 export type MoviesProps = {
   movies: TmdbMovie[];
 };
+
+export type MovieVideoProps = { movieId: string };

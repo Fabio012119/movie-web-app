@@ -1,12 +1,9 @@
 import { useCallback } from "react";
+import type { WatchEntry } from "@/types/general";
 
 const STORAGE_KEY = "watch_history";
 
-type WatchEntry = {
-  id: string;
-  progress: number;
-  timestamp: number;
-};
+
 
 export function useWatchHistory() {
   const getHistory = (): WatchEntry[] => {
@@ -39,6 +36,15 @@ export function useWatchHistory() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
   }, []);
 
+  const addEntry = useCallback((id: string) => {
+    const history = getHistory();
+    const exists = history.some((entry) => entry.id === id);
+    if (!exists) {
+      history.push({ id, progress: 0, timestamp: Date.now() });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+    }
+  }, []);
+
   const getRecentlyWatched = useCallback((): WatchEntry[] => {
     return getHistory().sort((a, b) => b.timestamp - a.timestamp);
   }, []);
@@ -46,6 +52,7 @@ export function useWatchHistory() {
   return {
     saveProgress,
     getProgress,
+    addEntry,
     removeEntry,
     getRecentlyWatched,
   };

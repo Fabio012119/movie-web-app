@@ -48,3 +48,9 @@ export type MovieDetails = {
   title: string;
   overview: string;
 };
+
+export type WatchEntry = {
+  id: string;
+  progress: number;
+  timestamp: number;
+};

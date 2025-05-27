@@ -4,47 +4,17 @@
 import MovieCard from "../MovieCard";
 import MovieVideo from "../MovieVideo";
 
-//Hooks
-import { useAppContext } from "@/context/AppContext";
-import { useEffect, useState } from "react";
-
 //Helpers
-import { fetchMovies } from "@/helpers/fetchMovies";
-
-//Types
-import type { MovieDetails, CastMember, TmdbMovie } from "@/types/general";
+import { useGetMovieDetails } from "@/hooks/useGetMovieDetails";
 
 export default function MovieModal() {
-  const { selectedContentId, setSelectedContentId } = useAppContext();
-  const [movie, setMovie] = useState<MovieDetails | null>(null);
-  const [cast, setCast] = useState<CastMember[]>([]);
-  const [recommendations, setRecommendations] = useState<TmdbMovie[]>([]);
-
-  useEffect(() => {
-    if (!selectedContentId) return;
-
-    const fetchData = async () => {
-      const [movieData, creditsData, recData] = await Promise.all([
-        fetchMovies<MovieDetails>(`movie/${selectedContentId}`),
-        fetchMovies<{ cast: CastMember[] }>(
-          `movie/${selectedContentId}/credits`
-        ),
-        fetchMovies<{ results: TmdbMovie[] }>(
-          `movie/${selectedContentId}/recommendations`
-        ),
-      ]);
-
-      setMovie({
-        title: movieData.title,
-        overview: movieData.overview,
-      });
-
-      setCast(creditsData.cast.slice(0, 5));
-      setRecommendations(recData.results.slice(0, 5));
-    };
-
-    fetchData();
-  }, [selectedContentId]);
+  const {
+    selectedContentId,
+    setSelectedContentId,
+    movie,
+    cast,
+    recommendations,
+  } = useGetMovieDetails();
 
   if (!selectedContentId || !movie) return null;
 
