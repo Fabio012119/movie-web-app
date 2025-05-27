@@ -14,6 +14,9 @@ import { Navigation, Autoplay } from "swiper/modules";
 //Assets
 import "swiper/css/bundle";
 
+//Consts
+import { slidesPerView } from "@/constants";
+
 //Types
 import type { Swiper as SwiperType } from "swiper";
 import type { ContentRowProps } from "@/types/elementsProps";
@@ -40,17 +43,7 @@ export default function ContentRow({
           reverseDirection: !isEven,
         }}
         speed={2000 * rowIndex}
-        breakpoints={{
-          0: {
-            slidesPerView: 2,
-          },
-          769: {
-            slidesPerView: 4,
-          },
-          1280: {
-            slidesPerView: 6,
-          },
-        }}
+        breakpoints={slidesPerView}
         spaceBetween={10}
         allowTouchMove={true}
       >
