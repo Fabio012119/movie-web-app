@@ -13,8 +13,9 @@ export function useWatchHistory() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
-    } catch {
-      return [];
+    } catch (error) {
+      console.error("Failed to read watch history:", error);
+      throw new Error("Unable to retrieve watch history.");
     }
   };
 
