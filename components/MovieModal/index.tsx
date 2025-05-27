@@ -1,22 +1,18 @@
 "use client";
 
-import { useAppContext } from "@/context/AppContext";
-import { useEffect, useState } from "react";
-import { fetchMovies } from "@/helpers/fetchMovies";
+//Components
 import MovieCard from "../MovieCard";
-import { TmdbMovie } from "@/types/general";
 import MovieVideo from "../MovieVideo";
 
-type CastMember = {
-  id: number;
-  name: string;
-  character: string;
-};
+//Hooks
+import { useAppContext } from "@/context/AppContext";
+import { useEffect, useState } from "react";
 
-type MovieDetails = {
-  title: string;
-  overview: string;
-};
+//Helpers
+import { fetchMovies } from "@/helpers/fetchMovies";
+
+//Types
+import type { MovieDetails, CastMember, TmdbMovie } from "@/types/general";
 
 export default function MovieModal() {
   const { selectedContentId, setSelectedContentId } = useAppContext();

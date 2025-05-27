@@ -1,6 +1,9 @@
 "use client";
 
+//Components
 import Link from "next/link";
+
+//Utils
 import { useAppContext } from "@/context/AppContext";
 import { slugify } from "@/utils/slugify";
 

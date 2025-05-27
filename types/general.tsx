@@ -35,3 +35,16 @@ export type AppState = {
 };
 
 export type GenreMovieMap = Record<number, TmdbMovie[]>;
+
+export type MovieWithProgress = TmdbMovie & { progress: number };
+
+export type CastMember = {
+  id: number;
+  name: string;
+  character: string;
+};
+
+export type MovieDetails = {
+  title: string;
+  overview: string;
+};

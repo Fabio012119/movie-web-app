@@ -1,11 +1,17 @@
 "use client";
-import { useWatchHistory } from "@/hooks/useWatchHistory";
-import MovieCard from "@/components/MovieCard";
-import { useEffect, useState } from "react";
-import { fetchMovies } from "@/helpers/fetchMovies";
-import type { TmdbMovie } from "@/types/general";
 
-type MovieWithProgress = TmdbMovie & { progress: number };
+//Component
+import MovieCard from "@/components/MovieCard";
+
+//Hooks
+import { useWatchHistory } from "@/hooks/useWatchHistory";
+import { useEffect, useState } from "react";
+
+//Helpers
+import { fetchMovies } from "@/helpers/fetchMovies";
+
+//Types
+import type { TmdbMovie, MovieWithProgress } from "@/types/general";
 
 export default function RecentlyWatched() {
   const { getRecentlyWatched } = useWatchHistory();
