@@ -25,6 +25,9 @@ export default function ContentRow({
   title,
   movies,
   rowIndex,
+  showProgressBar = false,
+  onRemove,
+  removingId,
 }: ContentRowProps) {
   const isEven = rowIndex % 2 === 0;
   const swiperRef = useRef<SwiperType | null>(null);
@@ -35,7 +38,7 @@ export default function ContentRow({
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation={true}
-        loop={true}
+        loop={false}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         autoplay={{
           delay: 0,
@@ -53,7 +56,37 @@ export default function ContentRow({
             onMouseEnter={() => pauseAutoplay(swiperRef.current)}
             onTouchStart={() => pauseAutoplay(swiperRef.current)}
           >
-            <MovieCard movie={movie} small />
+            <div
+              className={
+                showProgressBar
+                  ? `relative transition-opacity duration-300 ${
+                      removingId === `${movie.id}` ? "opacity-0" : "opacity-100"
+                    }`
+                  : ""
+              }
+            >
+              <MovieCard movie={movie} />
+              {showProgressBar && (
+                <div className="h-1 bg-gray-300 mt-1 rounded overflow-hidden">
+                  <div
+                    className="h-full bg-blue-600 transition-all"
+                    style={{
+                      width: movie.runtime
+                        ? `${(movie.progress / movie.runtime) * 100}%`
+                        : "0%",
+                    }}
+                  />
+                </div>
+              )}
+              {onRemove && (
+                <button
+                  onClick={() => onRemove(`${movie.id}`)}
+                  className="absolute top-0 right-0 text-xs bg-black bg-opacity-60 text-white px-1 py-0.5 rounded-bl cursor-pointer"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

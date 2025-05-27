@@ -25,7 +25,7 @@ export default function HomePage() {
   if (error) return <p className="text-red-600">Error: {error}</p>;
 
   return (
-    <section>
+    <>
       <ContentRow
         key="most-popular"
         title="Most popular"
@@ -40,6 +40,6 @@ export default function HomePage() {
           movies={moviesByGenre[genre.id] || []}
         />
       ))}
-    </section>
+    </>
   );
 }

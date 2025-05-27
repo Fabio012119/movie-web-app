@@ -1,14 +1,11 @@
 "use client";
 
 //Component
-import MovieCard from "@/components/MovieCard";
+import ContentRow from "@/components/ContentRow";
 
 //Hooks
 import { useWatchHistory } from "@/hooks/useWatchHistory";
 import { useEffect, useState } from "react";
-
-//Utils
-import { twMerge } from "tailwind-merge";
 
 //Helpers
 import { loadWatchedMovies } from "@/helpers/recentlyWatched";
@@ -37,43 +34,18 @@ export default function RecentlyWatched() {
   };
 
   return (
-    <section>
-      <h2 className="text-xl font-semibold mb-4">Continue Watching</h2>
-      <div className="flex gap-4 overflow-x-auto">
-        {movies.map((movie) => (
-          <div
-            key={movie.id}
-            className={`relative w-[150px] shrink-0 transition-opacity duration-300 ${
-              removingId === `${movie.id}` ? "opacity-0" : "opacity-100"
-            }`}
-          >
-            <MovieCard movie={movie} small />
-            <div className="h-1 bg-gray-300 mt-1 rounded overflow-hidden">
-              <div
-                className="h-full bg-blue-600 transition-all"
-                style={{
-                  width: movie.runtime
-                    ? `${(movie.progress / movie.runtime) * 100}%`
-                    : "0%",
-                }}
-              />
-            </div>
-            <button
-              onClick={() => handleRemove(`${movie.id}`)}
-              className={twMerge(
-                "absolute top-0 right-0 text-xs",
-                "bg-black bg-opacity-60 text-white",
-                "px-1 py-0.5 rounded-bl cursor-pointer"
-              )}
-            >
-              ✕
-            </button>
-          </div>
-        ))}
-        {areThereMovies && (
-          <p className="text-green-400">Go and watch some movies</p>
-        )}
-      </div>
-    </section>
+    <>
+      <ContentRow
+        title="Continue Watching"
+        movies={movies}
+        rowIndex={2}
+        showProgressBar={true}
+        onRemove={handleRemove}
+        removingId={removingId}
+      />
+      {areThereMovies && (
+        <p className="text-green-400">Go and watch some movies</p>
+      )}
+    </>
   );
 }

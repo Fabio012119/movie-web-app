@@ -61,7 +61,7 @@ export default function MovieModal() {
                 key={rec.id}
                 className="relative w-[96px] h-[144px] shrink-0 rounded overflow-hidden"
               >
-                <MovieCard movie={rec} />
+                <MovieCard movie={rec} small />
               </div>
             ))}
           </div>
