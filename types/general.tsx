@@ -10,6 +10,8 @@ export type TmdbMovie = {
   popularity: number;
   original_language: string;
   genre_ids: number[];
+  progress: number;
+  runtime: number;
 };
 
 export type TmdbResponse<T> = {

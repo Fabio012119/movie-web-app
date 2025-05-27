@@ -39,7 +39,17 @@ export default function ContentRow({
           reverseDirection: !isEven,
         }}
         speed={2000 * rowIndex}
-        slidesPerView={6}
+        breakpoints={{
+          0: {
+            slidesPerView: 2,
+          },
+          769: {
+            slidesPerView: 4,
+          },
+          1280: {
+            slidesPerView: 6,
+          },
+        }}
         spaceBetween={10}
         allowTouchMove={true}
       >
