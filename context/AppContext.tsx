@@ -8,7 +8,7 @@ const AppContext = createContext<AppState | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [selectedContentId, setSelectedContentId] = useState<string | null>(
-    null
+    null,
   );
 
   const { genres, genresLoading, genresError } = useGetGenres();

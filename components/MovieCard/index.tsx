@@ -42,7 +42,7 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
           className={twMerge(
             "absolute p-2 inset-0 bg-[rgba(0,0,0,0.6)] text-white",
             "opacity-0 group-hover:opacity-100 transition-opacity",
-            "duration-300 flex flex-col justify-end text-xs rounded"
+            "duration-300 flex flex-col justify-end text-xs rounded",
           )}
         >
           <p className="font-semibold text-sm truncate">{movie.title}</p>

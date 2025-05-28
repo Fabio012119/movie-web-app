@@ -4,7 +4,7 @@ export const handleNavigation = (
   swiper: SwiperType,
   direction: "next" | "prev",
   autoplaySpeed: number,
-  immediateSpeed: number = 300
+  immediateSpeed: number = 300,
 ): void => {
   swiper.params.speed = immediateSpeed;
 
@@ -29,7 +29,7 @@ export const renderProgressBar = (progress: number, runtime: number) => {
 
 export const renderRemoveButton = (
   onRemove: (id: string) => void,
-  id: string
+  id: string,
 ) => (
   <button
     onClick={() => onRemove(id)}

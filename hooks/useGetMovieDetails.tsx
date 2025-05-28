@@ -16,10 +16,10 @@ export const useGetMovieDetails = () => {
       const [movieData, creditsData, recData] = await Promise.all([
         fetchMovies<MovieDetails>(`movie/${selectedContentId}`),
         fetchMovies<{ cast: CastMember[] }>(
-          `movie/${selectedContentId}/credits`
+          `movie/${selectedContentId}/credits`,
         ),
         fetchMovies<{ results: TmdbMovie[] }>(
-          `movie/${selectedContentId}/recommendations`
+          `movie/${selectedContentId}/recommendations`,
         ),
       ]);
 

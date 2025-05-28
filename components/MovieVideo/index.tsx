@@ -19,7 +19,7 @@ export default function MovieVideo({ movieId }: MovieVideoProps) {
       video,
       movieId,
       getProgress,
-      saveProgress
+      saveProgress,
     );
 
     return cleanup;

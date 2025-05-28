@@ -2,7 +2,7 @@ export const setupVideoProgress = (
   video: HTMLVideoElement,
   movieId: string,
   getProgress: (id: string) => number,
-  saveProgress: (id: string, progress: number) => void
+  saveProgress: (id: string, progress: number) => void,
 ) => {
   video.currentTime = getProgress(movieId);
 
@@ -23,7 +23,7 @@ export const setupVideoProgress = (
 export const handlePlayProgress = (
   video: HTMLVideoElement,
   movieId: string,
-  saveProgress: (id: string, progress: number) => void
+  saveProgress: (id: string, progress: number) => void,
 ) => {
   saveProgress(movieId, Math.floor(video.currentTime));
 };

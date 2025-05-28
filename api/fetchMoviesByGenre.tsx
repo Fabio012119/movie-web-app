@@ -4,7 +4,7 @@ import { fetchMovies } from "./fetchMovies";
 import { TmdbResponse, TmdbMovie } from "@/types/general";
 
 export async function fetchMoviesByGenre(
-  genreId: number
+  genreId: number,
 ): Promise<TmdbMovie[]> {
   const data = await fetchMovies<TmdbResponse<TmdbMovie>>("discover/movie", {
     with_genres: genreId,

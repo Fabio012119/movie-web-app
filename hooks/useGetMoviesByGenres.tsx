@@ -23,7 +23,7 @@ export function useGetMoviesByGenres() {
           genreList.map(async (genre) => {
             const movies = await fetchMoviesByGenre(genre.id);
             return { id: genre.id, movies };
-          })
+          }),
         );
 
         const map: Record<number, TmdbMovie[]> = {};

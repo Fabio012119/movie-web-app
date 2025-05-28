@@ -16,7 +16,7 @@ export default function ContentRowSkeleton() {
               key={idx}
               className={twMerge(
                 "w-[150px] sm:w-[180px] md:w-[200px]",
-                "lg:w-[220px] h-[300px] bg-[rgba(209,213,219,0.5)] rounded-md"
+                "lg:w-[220px] h-[300px] bg-[rgba(209,213,219,0.5)] rounded-md",
               )}
             />
           ))}

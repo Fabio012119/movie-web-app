@@ -5,7 +5,7 @@ import { lazy, Suspense } from "react";
 // Lazy Components
 const ContentRow = lazy(() => import("@/components/ContentRow"));
 const ContentRowSkeleton = lazy(
-  () => import("@/components/ContentRowSkeleton")
+  () => import("@/components/ContentRowSkeleton"),
 );
 const Spinner = lazy(() => import("@/components/Spinner"));
 // Hook
@@ -16,7 +16,7 @@ export default function HomePage() {
 
   const allMovies = Object.values(moviesByGenre).flat();
   const uniqueMovies = Array.from(
-    new Map(allMovies.map((m) => [m.id, m])).values()
+    new Map(allMovies.map((m) => [m.id, m])).values(),
   );
 
   const topByVote = uniqueMovies

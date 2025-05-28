@@ -14,7 +14,7 @@ export default async function GenrePage({
   const { slug } = await params;
   const genres = await fetchGenres();
   const genre = genres.find(
-    (g) => g.name.toLowerCase() === deSlugify(slug).toLowerCase()
+    (g) => g.name.toLowerCase() === deSlugify(slug).toLowerCase(),
   );
 
   if (!genre) notFound();
