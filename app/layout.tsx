@@ -1,22 +1,19 @@
-//Components
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import MovieModal from "@/components/MovieModal";
-import Head from "next/head";
-//Providers
 import { AppProvider } from "@/context/AppContext";
+//Components
+import LayoutShell from "@/components/LayoutShell";
+import Head from "next/head";
+//Assets
+import { Inter } from "next/font/google";
+import "./globals.css";
 //Types
 import type { Metadata } from "next";
-//Assets
-import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Zenith Flix",
   description: "Streaming interface",
 };
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -30,10 +27,7 @@ export default function RootLayout({
       </Head>
       <body className={`${inter.className} bg-gray-100 text-gray-900`}>
         <AppProvider>
-          <Header />
-          <main className="max-w-screen-xl mx-auto px-6 py-8">{children}</main>
-          <MovieModal />
-          <Footer />
+          <LayoutShell>{children}</LayoutShell>
         </AppProvider>
       </body>
     </html>

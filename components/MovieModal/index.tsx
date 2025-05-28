@@ -18,7 +18,7 @@ export default function MovieModal() {
     recommendations,
   } = useGetMovieDetails();
 
-  if (!selectedContentId || !movie) return <Spinner />;
+  if (!selectedContentId || !movie) return null;
 
   return (
     <div
