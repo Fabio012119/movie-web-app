@@ -9,12 +9,12 @@ import { deSlugify } from "@/utils/slugify";
 export default async function GenrePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const genres = await fetchGenres();
   const genre = genres.find(
-    (g) => g.name.toLowerCase() === deSlugify(slug).toLowerCase(),
+    (g) => g.name.toLowerCase() === deSlugify(slug).toLowerCase()
   );
 
   if (!genre) notFound();

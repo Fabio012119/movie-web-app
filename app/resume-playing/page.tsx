@@ -17,6 +17,7 @@ export default function RecentlyWatched() {
 
   useEffect(() => {
     loadWatchedMovies(getRecentlyWatched).then(setMovies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleRemove = (id: string) => {
