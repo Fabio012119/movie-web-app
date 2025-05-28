@@ -36,7 +36,7 @@ export default function Footer() {
         </ul>
 
         <p className="text-xs text-gray-500 mt-6">
-          &copy; {new Date().getFullYear()} Movie web app
+          &copy; {new Date().getFullYear()} Zenith Flix
         </p>
       </div>
     </footer>
