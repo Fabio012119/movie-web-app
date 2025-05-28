@@ -1,5 +1,4 @@
 //Components
-import Spinner from "../Spinner";
 import Link from "next/link";
 //Hooks
 import { useAppContext } from "@/context/AppContext";
@@ -9,7 +8,7 @@ import { slugify } from "@/utils/slugify";
 export default function GenreLinks() {
   const { genres, genresLoading, genresError } = useAppContext();
 
-  if (genresLoading) return <Spinner />;
+  if (genresLoading) return null;
   if (genresError) return <p className="text-red-600">Error: {genresError}</p>;
 
   return (

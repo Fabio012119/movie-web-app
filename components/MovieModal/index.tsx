@@ -1,11 +1,13 @@
 "use client";
-//Components
-import MovieCard from "../MovieCard";
-import MovieVideo from "../MovieVideo";
 //Utils
+import { lazy, Suspense } from "react";
 import { twMerge } from "tailwind-merge";
-//Helpers
+//Hooks
 import { useGetMovieDetails } from "@/hooks/useGetMovieDetails";
+// Lazy components
+const MovieCard = lazy(() => import("../MovieCard"));
+const MovieVideo = lazy(() => import("../MovieVideo"));
+const Spinner = lazy(() => import("../Spinner"));
 
 export default function MovieModal() {
   const {
@@ -40,8 +42,11 @@ export default function MovieModal() {
         <p className="mb-4 text-sm text-gray-600">{movie.overview}</p>
 
         <div className="mb-4">
-          <MovieVideo movieId={selectedContentId} />
+          <Suspense fallback={<Spinner/>}>
+            <MovieVideo movieId={selectedContentId} />
+          </Suspense>
         </div>
+
         <div className="mb-4">
           <h3 className="font-semibold">Top Cast:</h3>
           <ul className="list-disc list-inside text-sm">
@@ -61,7 +66,11 @@ export default function MovieModal() {
                 key={rec.id}
                 className="relative w-[96px] h-[144px] shrink-0 rounded overflow-hidden"
               >
-                <MovieCard movie={rec} small />
+                <Suspense
+                  fallback={<div className="bg-gray-300 w-full h-full" />}
+                >
+                  <MovieCard movie={rec} small />
+                </Suspense>
               </div>
             ))}
           </div>

@@ -3,7 +3,8 @@
 import { useRef } from "react";
 //Components
 import { Swiper, SwiperSlide } from "swiper/react";
-import MovieCard from "@/components/MovieCard";
+import { lazy } from "react";
+const MovieCard = lazy(() => import("@/components/MovieCard"));
 //Utils
 import { pauseAutoplay } from "@/utils/pauseAutoPlay";
 import { Navigation, Autoplay } from "swiper/modules";
