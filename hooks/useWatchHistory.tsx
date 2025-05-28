@@ -3,8 +3,6 @@ import type { WatchEntry } from "@/types/general";
 
 const STORAGE_KEY = "watch_history";
 
-
-
 export function useWatchHistory() {
   const getHistory = (): WatchEntry[] => {
     try {

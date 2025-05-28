@@ -1,9 +1,7 @@
 //Hooks
 import { useState, useEffect } from "react";
-
 //Helpers
-import { fetchGenres } from "@/helpers/fetchGenres";
-
+import { fetchGenres } from "@/api/fetchGenres";
 //Types
 import type { Genre } from "@/types/general";
 

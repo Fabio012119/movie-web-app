@@ -1,14 +1,11 @@
 "use client";
-
 //Components
-import Link from "next/link";
-
+import GenreLinks from "../GenreLinks";
 //Utils
 import { useAppContext } from "@/context/AppContext";
-import { slugify } from "@/utils/slugify";
 
 export default function Footer() {
-  const { genres, genresLoading, genresError } = useAppContext();
+  const { genresLoading, genresError } = useAppContext();
 
   return (
     <footer className="bg-gray-900 text-white py-6 mt-16">
@@ -22,18 +19,7 @@ export default function Footer() {
           <p className="text-sm text-red-500">Error: {genresError}</p>
         )}
 
-        <ul className="flex flex-wrap gap-4 text-sm">
-          {genres.map((genre) => (
-            <li key={genre.id}>
-              <Link
-                href={`/genre/${slugify(genre.name)}`}
-                className="hover:underline text-gray-300 hover:text-white transition"
-              >
-                {genre.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <GenreLinks />
 
         <p className="text-xs text-gray-500 mt-6">
           &copy; {new Date().getFullYear()} Zenith Flix

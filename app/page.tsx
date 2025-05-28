@@ -1,8 +1,9 @@
 "use client";
-
-import { useGetMoviesByGenres } from "@/hooks/useGetMoviesByGenres";
+//Components
 import ContentRow from "@/components/ContentRow";
 import ContentRowSkeleton from "@/components/ContentRowSkeleton";
+//Hooks
+import { useGetMoviesByGenres } from "@/hooks/useGetMoviesByGenres";
 
 export default function HomePage() {
   const { genres, moviesByGenre, loading, error } = useGetMoviesByGenres();

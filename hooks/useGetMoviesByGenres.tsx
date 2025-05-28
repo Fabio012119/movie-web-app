@@ -1,9 +1,8 @@
 //Hooks
 import { useEffect, useState } from "react";
-
 //Helpers
-import { fetchGenres } from "@/helpers/fetchGenres";
-import { fetchMoviesByGenre } from "@/helpers/fetchMoviesByGenre";
+import { fetchGenres } from "@/api/fetchGenres";
+import { fetchMoviesByGenre } from "@/api/fetchMoviesByGenre";
 
 //Types
 import type { GenreMovieMap, Genre, TmdbMovie } from "@/types/general";

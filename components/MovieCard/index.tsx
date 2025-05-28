@@ -1,15 +1,11 @@
 // Components
 import Image from "next/image";
-
 //Hooks
 import { useAppContext } from "@/context/AppContext";
-
 //Utils
 import { twMerge } from "tailwind-merge";
-
 //Assets
 import defaultImage from "@/assets/no-poster.png";
-
 // Types
 import type { MovieCardProps } from "@/types/elementsProps";
 

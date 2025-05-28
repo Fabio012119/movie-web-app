@@ -1,6 +1,5 @@
 //Helpers
 import { fetchMovies } from "./fetchMovies";
-
 //Types
 import { TmdbResponse, TmdbMovie } from "@/types/general";
 

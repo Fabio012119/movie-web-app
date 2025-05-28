@@ -1,12 +1,9 @@
 "use client";
-
 //Hooks
 import { useEffect, useRef } from "react";
 import { useWatchHistory } from "@/hooks/useWatchHistory";
-
 //Helpers
 import { setupVideoProgress, handlePlayProgress } from "@/helpers/MovieVideo";
-
 //Types
 import type { MovieVideoProps } from "@/types/elementsProps";
 

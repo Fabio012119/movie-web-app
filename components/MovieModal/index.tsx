@@ -1,12 +1,9 @@
 "use client";
-
 //Components
 import MovieCard from "../MovieCard";
 import MovieVideo from "../MovieVideo";
-
 //Utils
 import { twMerge } from "tailwind-merge";
-
 //Helpers
 import { useGetMovieDetails } from "@/hooks/useGetMovieDetails";
 

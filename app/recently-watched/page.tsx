@@ -1,15 +1,11 @@
 "use client";
-
 //Component
 import ContentRow from "@/components/ContentRow";
-
 //Hooks
 import { useWatchHistory } from "@/hooks/useWatchHistory";
 import { useEffect, useState } from "react";
-
 //Helpers
 import { loadWatchedMovies } from "@/helpers/recentlyWatched";
-
 //Types
 import type { MovieWithProgress } from "@/types/general";
 

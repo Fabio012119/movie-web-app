@@ -1,4 +1,4 @@
-import { fetchMovies } from "@/helpers/fetchMovies";
+import { fetchMovies } from "@/api/fetchMovies";
 import type { TmdbMovie, MovieWithProgress } from "@/types/general";
 import type { WatchEntry } from "@/types/general";
 
