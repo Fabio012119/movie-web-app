@@ -29,7 +29,9 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
         alt={movie.title}
         width={small ? 150 : 500}
         height={small ? 225 : 750}
-        className="rounded w-full h-auto transition-transform group-hover:scale-105"
+        className={`rounded w-full h-auto transition-transform group-hover:scale-105 ${
+          !small && "min-h-[290px]"
+        } `}
       />
 
       <div className="mt-3 ">

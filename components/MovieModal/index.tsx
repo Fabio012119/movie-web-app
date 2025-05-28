@@ -23,6 +23,9 @@ export default function MovieModal() {
 
   return (
     <div
+      onClick={(e) =>
+        e.target === e.currentTarget && setSelectedContentId(null)
+      }
       className={twMerge(
         "fixed inset-0 bg-[rgba(0,0,0,0.65)] flex",
         "items-center justify-center z-50 slide-bottom"

@@ -39,6 +39,16 @@ export default function ContentRow({
         modules={[Navigation, Autoplay]}
         navigation={true}
         loop={false}
+        onNavigationNext={(swiper) => {
+          swiper.params.speed = 300;
+          swiper.slideNext();
+          swiper.params.speed = 2000 * rowIndex;
+        }}
+        onNavigationPrev={(swiper) => {
+          swiper.params.speed = 300;
+          swiper.slidePrev();
+          swiper.params.speed = 2000 * rowIndex;
+        }}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         autoplay={{
           delay: 0,
