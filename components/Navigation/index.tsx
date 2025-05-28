@@ -6,7 +6,7 @@ export default function Navigation() {
       <Link href="/" className="hover:underline">
         Home
       </Link>
-      <Link href="/recently-watched" className="hover:underline">
+      <Link href="/resume-playing" className="hover:underline">
         Resume Playing
       </Link>
     </nav>
