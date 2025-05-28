@@ -18,7 +18,7 @@ export default function MovieModal() {
     recommendations,
   } = useGetMovieDetails();
 
-  if (!selectedContentId || !movie) return null;
+  if (!selectedContentId || !movie) return <Spinner />;
 
   return (
     <div
@@ -39,10 +39,12 @@ export default function MovieModal() {
         </button>
 
         <h2 className="text-2xl font-bold mb-2">{movie.title}</h2>
-        <p className="mb-4 text-sm text-gray-600">{movie.overview}</p>
+        <p className="mb-4 text-sm text-gray-600">
+          {movie.overview ? movie.overview : "No overview"}
+        </p>
 
         <div className="mb-4">
-          <Suspense fallback={<Spinner/>}>
+          <Suspense fallback={<Spinner />}>
             <MovieVideo movieId={selectedContentId} />
           </Suspense>
         </div>
@@ -55,26 +57,27 @@ export default function MovieModal() {
                 {actor.name} as {actor.character}
               </li>
             ))}
+            {cast.length === 0 && "No listed cast"}
           </ul>
         </div>
 
-        <div>
-          <h3 className="font-semibold mb-2">Recommended:</h3>
-          <div className="flex gap-4 overflow-x-auto">
-            {recommendations.map((rec) => (
-              <div
-                key={rec.id}
-                className="relative w-[96px] h-[144px] shrink-0 rounded overflow-hidden"
-              >
-                <Suspense
-                  fallback={<div className="bg-gray-300 w-full h-full" />}
+        {recommendations.length !== 0 && (
+          <div>
+            <h3 className="font-semibold mb-2">Recommended:</h3>
+            <div className="flex gap-4 overflow-x-auto">
+              {recommendations.map((rec) => (
+                <div
+                  key={rec.id}
+                  className="relative w-[96px] h-[144px] shrink-0 rounded overflow-hidden"
                 >
-                  <MovieCard movie={rec} small />
-                </Suspense>
-              </div>
-            ))}
+                  <Suspense fallback={<Spinner />}>
+                    <MovieCard movie={rec} small />
+                  </Suspense>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

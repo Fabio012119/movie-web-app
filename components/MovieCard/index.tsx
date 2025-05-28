@@ -30,10 +30,12 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
         } `}
       />
 
-      <div className="mt-3 ">
-        <h4 className="text-sm font-semibold truncate">{movie.title}</h4>
-        <p className="text-xs text-gray-400">{movie.release_date}</p>
-      </div>
+      {!small && (
+        <div className="mt-3 ">
+          <h4 className="text-sm font-semibold truncate">{movie.title}</h4>
+          <p className="text-xs text-gray-400">{movie.release_date}</p>
+        </div>
+      )}
 
       {!small && (
         <div
