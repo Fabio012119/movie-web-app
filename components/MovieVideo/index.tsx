@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import { useWatchHistory } from "@/hooks/useWatchHistory";
 //Helpers
 import { setupVideoProgress, handlePlayProgress } from "@/helpers/MovieVideo";
+//Consts
+import { testIds } from "@/constants";
 //Types
 import type { MovieVideoProps } from "@/types/elementsProps";
 
@@ -35,6 +37,7 @@ export default function MovieVideo({ movieId }: MovieVideoProps) {
   return (
     <video
       ref={videoRef}
+      data-testid={testIds.movieVideo}
       src="/mock_movie.mp4"
       controls
       className="w-full h-[20rem] rounded object-cover"

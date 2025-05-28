@@ -2,6 +2,8 @@
 import { useVisibleCards } from "@/helpers/general";
 //Utils
 import { twMerge } from "tailwind-merge";
+//Consts
+import { testIds } from "@/constants";
 
 export default function ContentRowSkeleton() {
   const visibleCards = useVisibleCards();
@@ -13,6 +15,7 @@ export default function ContentRowSkeleton() {
         {visibleCards !== 0 &&
           Array.from({ length: visibleCards }).map((_, idx) => (
             <div
+              data-testid={testIds.skeletonRow}
               key={idx}
               className={twMerge(
                 "w-[150px] sm:w-[180px] md:w-[200px]",

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useAppContext } from "@/context/AppContext";
 //Utils
 import { slugify } from "@/utils/slugify";
+//Constants
+import { testIds } from "@/constants";
 
 export default function GenreLinks() {
   const { genres, genresLoading, genresError } = useAppContext();
@@ -12,7 +14,10 @@ export default function GenreLinks() {
   if (genresError) return <p className="text-red-600">Error: {genresError}</p>;
 
   return (
-    <ul className="flex flex-wrap gap-4 text-sm">
+    <ul
+      className="flex flex-wrap gap-4 text-sm"
+      data-testid={testIds.genreLinks}
+    >
       {genres.map((genre) => (
         <li key={genre.id}>
           <Link

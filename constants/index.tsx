@@ -11,3 +11,14 @@ export const slidesPerView = {
     slidesPerView: 6,
   },
 };
+
+export const testIds = {
+  contentRow: "content-row",
+  movieCard: "movie-card",
+  progressBar: "progress-bar",
+  removeButton: "remove-button",
+  skeletonRow: "skeleton-row",
+  genreLinks: "genre-links",
+  navigation: "navigation",
+  movieVideo: "movie-video",
+};
