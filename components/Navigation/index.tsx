@@ -7,7 +7,7 @@ export default function Navigation() {
         Home
       </Link>
       <Link href="/recently-watched" className="hover:underline">
-        Watch History
+        Resume Playing
       </Link>
     </nav>
   );
