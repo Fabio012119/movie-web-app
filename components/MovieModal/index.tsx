@@ -27,10 +27,16 @@ export default function MovieModal() {
       }
       className={twMerge(
         "fixed inset-0 bg-[rgba(0,0,0,0.65)] flex",
-        "items-center justify-center z-50 slide-bottom",
+        "items-center justify-center z-50 slide-bottom"
       )}
     >
-      <div className="bg-white w-full max-w-4xl rounded p-6 relative text-black">
+      <div
+        className={twMerge(
+          "bg-white w-full landscape:w-3xl landscape:h-[90vh]",
+          "landscape:overflow-y-scroll max-w-4xl",
+          "rounded p-6 relative text-black"
+        )}
+      >
         <button
           onClick={() => setSelectedContentId(null)}
           className="absolute top-3 right-3 text-xl cursor-pointer"
