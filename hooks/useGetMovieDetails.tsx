@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import type { MovieDetails, CastMember, TmdbMovie } from "@/types/general";
 import { fetchMovies } from "@/api/fetchMovies";
 import { useAppContext } from "@/context/AppContext";
+import type { MovieDetails, CastMember, TmdbMovie } from "@/types/general";
 
 export const useGetMovieDetails = () => {
   const { selectedContentId, setSelectedContentId } = useAppContext();
