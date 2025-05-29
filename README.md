@@ -58,3 +58,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   It is a light package that comes with prebuilt functionality so this helped a lot do skip complex logic.
 - `tailwind-merge` was used to clean up some large classNames and make the code better looking
 - Unit & integration testing with Jest, Testing Library
+- TMDP movies api was used (https://developer.themoviedb.org/docs/getting-started)
