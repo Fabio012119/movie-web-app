@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+- In order to see the movies you need the bearer token please contact me at [`fabiooosara@gmail.com`].
+
 ```bash
 npm run dev
 # or
@@ -34,3 +36,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# MovieWebApp
+
+## Architectural decisions
+
+- Used simple colors, mostly black and blue
+- Styled using Tailwind CSS v4
+- In order to make the horizontal rows more UX friendly Swiper was used (https://www.npmjs.com/package/swiper).
+  It is a light package that comes with prebuilt functionality so this helped a lot do skip complex logic.
+- `tailwind-merge` was used to clean up some large classNames and make the code better looking
+- Unit & integration testing with Jest, Testing Library
