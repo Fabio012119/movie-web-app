@@ -3,12 +3,12 @@ import type { queryType } from "@/types/general";
 
 export async function fetchMovies<T>(
   endpoint: string,
-  query: queryType = {},
+  query: queryType = {}
 ): Promise<T> {
   const params = new URLSearchParams({
     language: "en-US",
     ...Object.fromEntries(
-      Object.entries(query).map(([k, v]) => [k, String(v)]),
+      Object.entries(query).map(([k, v]) => [k, String(v)])
     ),
   });
 
