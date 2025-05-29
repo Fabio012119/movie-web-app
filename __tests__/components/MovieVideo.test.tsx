@@ -40,7 +40,7 @@ describe("MovieVideo", () => {
       expect.any(HTMLVideoElement),
       mockMovieId,
       getProgress,
-      saveProgress
+      saveProgress,
     );
   });
 
@@ -51,7 +51,7 @@ describe("MovieVideo", () => {
     expect(handlePlayProgress).toHaveBeenCalledWith(
       expect.any(HTMLVideoElement),
       mockMovieId,
-      saveProgress
+      saveProgress,
     );
   });
 });

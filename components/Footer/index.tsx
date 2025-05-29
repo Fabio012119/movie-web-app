@@ -8,7 +8,11 @@ export default function Footer() {
   const { genresLoading, genresError } = useAppContext();
 
   return (
-    <footer className="bg-gray-900 text-white py-6 mt-16">
+    <footer
+      className="bg-gray-900 text-white py-6 mt-16"
+      role="contentinfo"
+      aria-label="Site footer"
+    >
       <div className="max-w-screen-xl mx-auto px-6">
         <h4 className="text-lg font-semibold mb-4">Browse by Genre</h4>
 

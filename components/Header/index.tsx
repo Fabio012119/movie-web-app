@@ -6,7 +6,11 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="w-full bg-gray-900 text-white px-6 py-4 shadow-md">
+    <header
+      className="w-full bg-gray-900 text-white px-6 py-4 shadow-md"
+      role="banner"
+      aria-label="Zenith Flix site header"
+    >
       <div className="flex items-center justify-between max-w-screen-xl mx-auto ">
         <Link
           href="/"

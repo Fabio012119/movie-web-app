@@ -21,7 +21,7 @@ describe("MovieCard", () => {
     const img = screen.getByRole("img");
     expect(img).toHaveAttribute(
       "src",
-      `https://image.tmdb.org/t/p/w500${mockMovieWIthAllValues.poster_path}`
+      `https://image.tmdb.org/t/p/w500${mockMovieWIthAllValues.poster_path}`,
     );
     expect(img).toHaveAttribute("alt", mockMovieWIthAllValues.title);
   });
@@ -37,7 +37,7 @@ describe("MovieCard", () => {
     render(<MovieCard movie={mockMovieWIthAllValues} />);
     fireEvent.click(screen.getByRole("img"));
     expect(mockSetSelectedContentId).toHaveBeenCalledWith(
-      String(mockMovieWIthAllValues.id)
+      String(mockMovieWIthAllValues.id),
     );
   });
 
@@ -50,7 +50,7 @@ describe("MovieCard", () => {
   it("does not render detailed overlay or title when small is true", () => {
     render(<MovieCard movie={mockMovieWIthAllValues} small />);
     expect(
-      screen.queryByText(mockMovieWIthAllValues.title)
+      screen.queryByText(mockMovieWIthAllValues.title),
     ).not.toBeInTheDocument();
     expect(screen.queryByText(/Rating:/)).not.toBeInTheDocument();
   });
@@ -59,8 +59,8 @@ describe("MovieCard", () => {
     render(<MovieCard movie={mockMovieWIthAllValues} />);
     expect(
       screen.getByText(
-        `Rating: ${mockMovieWIthAllValues.vote_average.toFixed(1)}`
-      )
+        `Rating: ${mockMovieWIthAllValues.vote_average.toFixed(1)}`,
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText(`Release Date: 2010`)).toBeInTheDocument();
     expect(screen.getByText(/Language:/)).toHaveTextContent("en");

@@ -17,6 +17,9 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label={`Open details for ${movie.title}`}
       className="relative group cursor-pointer p-2"
       onClick={() => setSelectedContentId(String(movie.id))}
     >

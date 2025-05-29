@@ -35,7 +35,12 @@ export default function ContentRow({
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="mb-12 relative" data-testid={testIds.contentRow}>
+    <section
+      className="mb-12 relative"
+      data-testid={testIds.contentRow}
+      aria-label={`${title} carousel`}
+      aria-roledescription="carousel"
+    >
       <h3 className="text-xl font-semibold mb-4">{title}</h3>
       <Swiper
         modules={[Navigation, Autoplay]}
