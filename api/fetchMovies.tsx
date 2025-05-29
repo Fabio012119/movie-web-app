@@ -1,8 +1,9 @@
 import { TMDB_BASE_URL } from "@/constants";
+import type { queryType } from "@/types/general";
 
 export async function fetchMovies<T>(
   endpoint: string,
-  query: Record<string, string | number> = {}
+  query: queryType = {}
 ): Promise<T> {
   const params = new URLSearchParams({
     language: "en-US",

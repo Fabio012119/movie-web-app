@@ -54,3 +54,5 @@ export type WatchEntry = {
   progress: number;
   timestamp: number;
 };
+
+export type queryType = Record<string, string | number>;
