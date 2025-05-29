@@ -1,15 +1,17 @@
+"use client";
+import { memo } from "react";
 // Components
 import Image from "next/image";
-//Hooks
+// Hooks
 import { useAppContext } from "@/context/AppContext";
-//Utils
+// Utils
 import { twMerge } from "tailwind-merge";
-//Assets
+// Assets
 import defaultImage from "@/assets/no-poster.png";
 // Types
 import type { MovieCardProps } from "@/types/elementsProps";
 
-export default function MovieCard({ movie, small = false }: MovieCardProps) {
+function MovieCardComponent({ movie, small = false }: MovieCardProps) {
   const { setSelectedContentId } = useAppContext();
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
@@ -30,11 +32,11 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
         height={small ? 225 : 750}
         className={`rounded w-full h-auto transition-transform group-hover:scale-105 ${
           !small && "min-h-[290px]"
-        } `}
+        }`}
       />
 
       {!small && (
-        <div className="mt-3 ">
+        <div className="mt-3">
           <h4 className="text-sm font-semibold truncate">{movie.title}</h4>
           <p className="text-xs text-gray-400">{movie.release_date}</p>
         </div>
@@ -45,7 +47,7 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
           className={twMerge(
             "absolute p-2 inset-0 bg-[rgba(0,0,0,0.6)] text-white",
             "opacity-0 group-hover:opacity-100 transition-opacity",
-            "duration-300 flex flex-col justify-end text-xs rounded",
+            "duration-300 flex flex-col justify-end text-xs rounded"
           )}
         >
           <p className="font-semibold text-sm truncate">{movie.title}</p>
@@ -60,3 +62,6 @@ export default function MovieCard({ movie, small = false }: MovieCardProps) {
     </div>
   );
 }
+
+const MovieCard = memo(MovieCardComponent);
+export default MovieCard;

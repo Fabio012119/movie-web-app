@@ -1,15 +1,16 @@
 "use client";
-//Utils
-import { lazy, Suspense } from "react";
+// Utils
+import dynamic from "next/dynamic";
+import { Suspense, memo } from "react";
 import { twMerge } from "tailwind-merge";
-//Hooks
+// Hooks
 import { useGetMovieDetails } from "@/hooks/useGetMovieDetails";
-// Lazy components
-const MovieCard = lazy(() => import("../MovieCard"));
-const MovieVideo = lazy(() => import("../MovieVideo"));
-const Spinner = lazy(() => import("../Spinner"));
+//components
+const MovieCard = dynamic(() => import("../MovieCard"));
+const MovieVideo = dynamic(() => import("../MovieVideo"));
+const Spinner = dynamic(() => import("../Spinner"));
 
-export default function MovieModal() {
+function MovieModalComponent() {
   const {
     selectedContentId,
     setSelectedContentId,
@@ -88,3 +89,6 @@ export default function MovieModal() {
     </div>
   );
 }
+
+const MovieModal = memo(MovieModalComponent);
+export default MovieModal;

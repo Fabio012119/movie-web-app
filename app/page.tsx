@@ -1,15 +1,16 @@
 "use client";
 
-import { lazy, Suspense } from "react";
-
-// Lazy Components
-const ContentRow = lazy(() => import("@/components/ContentRow"));
-const ContentRowSkeleton = lazy(
-  () => import("@/components/ContentRowSkeleton"),
-);
-const Spinner = lazy(() => import("@/components/Spinner"));
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 // Hook
 import { useGetMoviesByGenres } from "@/hooks/useGetMoviesByGenres";
+
+// Lazy Components
+const ContentRow = dynamic(() => import("@/components/ContentRow"));
+const ContentRowSkeleton = dynamic(
+  () => import("@/components/ContentRowSkeleton"),
+);
+const Spinner = dynamic(() => import("@/components/Spinner"));
 
 export default function HomePage() {
   const { genres, moviesByGenre, loading, error } = useGetMoviesByGenres();
@@ -24,7 +25,6 @@ export default function HomePage() {
     .slice(0, 20);
 
   if (loading) return <Spinner />;
-
   if (error) return <p className="text-red-600">Error: {error}</p>;
 
   return (

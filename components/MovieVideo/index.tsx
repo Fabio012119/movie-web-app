@@ -1,6 +1,6 @@
 "use client";
-//Hooks
-import { useEffect, useRef } from "react";
+//hooks
+import { useEffect, useRef, memo } from "react";
 import { useWatchHistory } from "@/hooks/useWatchHistory";
 //Helpers
 import { setupVideoProgress, handlePlayProgress } from "@/helpers/MovieVideo";
@@ -9,7 +9,7 @@ import { testIds } from "@/constants";
 //Types
 import type { MovieVideoProps } from "@/types/elementsProps";
 
-export default function MovieVideo({ movieId }: MovieVideoProps) {
+function MovieVideoComponent({ movieId }: MovieVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const { saveProgress, getProgress } = useWatchHistory();
 
@@ -45,3 +45,6 @@ export default function MovieVideo({ movieId }: MovieVideoProps) {
     />
   );
 }
+
+const MovieVideo = memo(MovieVideoComponent);
+export default MovieVideo;

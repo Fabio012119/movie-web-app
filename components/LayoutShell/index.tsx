@@ -1,17 +1,14 @@
 "use client";
-
+//Utils
+import dynamic from "next/dynamic";
+import { Suspense, memo } from "react";
 import { useAppContext } from "@/context/AppContext";
-import { lazy, Suspense } from "react";
+//Components
+const Header = dynamic(() => import("../Header"));
+const Footer = dynamic(() => import("../Footer"));
+const MovieModal = dynamic(() => import("../MovieModal"));
 
-const Header = lazy(() => import("../Header"));
-const Footer = lazy(() => import("../Footer"));
-const MovieModal = lazy(() => import("../MovieModal"));
-
-export default function LayoutShell({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function LayoutShellComponent({ children }: { children: React.ReactNode }) {
   const { selectedContentId } = useAppContext();
 
   return (
@@ -34,3 +31,5 @@ export default function LayoutShell({
     </>
   );
 }
+
+export default memo(LayoutShellComponent);

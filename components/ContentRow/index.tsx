@@ -1,28 +1,29 @@
 "use client";
-//Hooks
-import { useRef } from "react";
-//Components
-import { Swiper, SwiperSlide } from "swiper/react";
-import { lazy } from "react";
-const MovieCard = lazy(() => import("@/components/MovieCard"));
-//Utils
+
+// Hooks
+import { useRef, memo } from "react";
+// Utils
+import dynamic from "next/dynamic";
 import { pauseAutoplay } from "@/utils/pauseAutoPlay";
 import { Navigation, Autoplay } from "swiper/modules";
-//Helpers
+// Helpers
 import {
   handleNavigation,
   renderProgressBar,
   renderRemoveButton,
 } from "@/helpers/ContentRow";
-//Assets
+// Assets
 import "swiper/css/bundle";
-//Consts
+// Consts
 import { slidesPerView, testIds } from "@/constants";
-//Types
+// Types
 import type { Swiper as SwiperType } from "swiper";
 import type { ContentRowProps } from "@/types/elementsProps";
+// Components
+import { Swiper, SwiperSlide } from "swiper/react";
+const MovieCard = dynamic(() => import("@/components/MovieCard"));
 
-export default function ContentRow({
+function ContentRowComponent({
   title,
   movies,
   rowIndex,
@@ -90,3 +91,6 @@ export default function ContentRow({
     </section>
   );
 }
+
+const ContentRow = memo(ContentRowComponent);
+export default ContentRow;
