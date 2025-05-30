@@ -2,9 +2,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-- In order to see the movies you need the bearer token please contact me at [`fabiooosara@gmail.com`].
-  once you have the token you need to go to the /api/fetchMovies.tsx file remove ADD_TOKEN_HERE then paste your token
-
 First, run the development server:
 
 ```bash
