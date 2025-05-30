@@ -5,7 +5,7 @@ import { Suspense } from "react";
 // Hook
 import { useGetMoviesByGenres } from "@/hooks/useGetMoviesByGenres";
 
-// Lazy Components
+//Components
 const ContentRow = dynamic(() => import("@/components/ContentRow"));
 const ContentRowSkeleton = dynamic(
   () => import("@/components/ContentRowSkeleton"),
