@@ -20,7 +20,7 @@ export default function HomePage() {
 
   const movies = uniqueMovies(allMovies);
 
-  const topMovies = topByVote(movies);
+  const mostPopular = topByVote(movies);
 
   if (loading) return <Spinner />;
   if (error) return <p className="text-red-600">Error: {error}</p>;
@@ -31,7 +31,7 @@ export default function HomePage() {
         <ContentRow
           key="most-popular"
           title="Most popular"
-          movies={topMovies}
+          movies={mostPopular}
           rowIndex={1}
         />
       </Suspense>
